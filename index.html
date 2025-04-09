@@ -1,14 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Oasis of Hope - واحة الأمل</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>واحة الأمل - Oasis of Hope</title>
+  <style>
+    body {
+      font-family: 'Tahoma', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav, .language-switcher {
+      background-color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+    nav a, .language-switcher button {
+      color: #007bff;
+      background: none;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .article {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-right: 5px solid #007bff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .article h2 {
+      margin-top: 0;
+    }
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 2rem;">
-  <h1>🌿 Oasis of Hope - واحة الأمل</h1>
-  <p>Welcome to our website about depression, youth issues, and health awareness.</p>
-  <p>مرحباً بكم في موقعنا حول الاكتئاب، مشكلات الشباب، والتوعية الصحية.</p>
-  <p>欢迎来到我们的网站，内容涉及抑郁、青年问题和健康意识。</p>
+<body>
+
+<header>
+  <h1 id="site-title">واحة الأمل</h1>
+  <p id="site-tagline">مساحتك للتوعية النفسية، والتحفيز، وفهم الذات</p>
+</header>
+
+<div class="language-switcher">
+  <button onclick="switchLanguage('ar')">العربية</button>
+  <button onclick="switchLanguage('en')">English</button>
+  <button onclick="switchLanguage('zh')">中文</button>
+</div>
+
+<nav>
+  <a href="#">الاكتئاب / Depression / 抑郁</a>
+  <a href="#">مشاكل الشباب / Youth Problems / 青年问题</a>
+  <a href="#">الصحة النفسية / Mental Health / 心理健康</a>
+  <a href="#">التحفيز / Motivation / 激励</a>
+</nav>
+
+<main>
+
+  <!-- Arabic Content -->
+  <div class="lang-content lang-ar active">
+    <div class="article">
+      <h2>ما هو الاكتئاب؟</h2>
+      <p>الاكتئاب ليس مجرد حزن، بل حالة نفسية تؤثر على كل جوانب الحياة. هنا نناقش أعراضه وكيفية التعامل معه.</p>
+    </div>
+    <div class="article">
+      <h2>تحديات الشباب</h2>
+      <p>الضغط، القلق، والمستقبل... نناقش أبرز ما يواجهه الشباب في العصر الحالي.</p>
+    </div>
+  </div>
+
+  <!-- English Content -->
+  <div class="lang-content lang-en">
+    <div class="article">
+      <h2>What is Depression?</h2>
+      <p>Depression is more than just sadness. It's a psychological condition that affects every aspect of life. Here we explore its symptoms and ways to cope.</p>
+    </div>
+    <div class="article">
+      <h2>Youth Challenges</h2>
+      <p>Pressure, anxiety, and uncertainty — we discuss the main struggles youth face today.</p>
+    </div>
+  </div>
+
+  <!-- Chinese Content -->
+  <div class="lang-content lang-zh">
+    <div class="article">
+      <h2>什么是抑郁症？</h2>
+      <p>抑郁不仅仅是悲伤，而是一种影响生活各方面的心理状态。我们在这里讨论症状以及应对方法。</p>
+    </div>
+    <div class="article">
+      <h2>青年面临的挑战</h2>
+      <p>压力、焦虑与未来的不确定性 —— 探讨当代青年所面临的主要问题。</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2025 واحة الأمل - Oasis of Hope - 希望绿洲
+</footer>
+
+<script>
+  function switchLanguage(lang) {
+    const contents = document.querySelectorAll('.lang-content');
+    contents.forEach(el => el.classList.remove('active'));
+
+    const selected = document.querySelector('.lang-' + lang);
+    if (selected) selected.classList.add('active');
+
+    const titles = {
+      ar: ["واحة الأمل", "مساحتك للتوعية النفسية، والتحفيز، وفهم الذات"],
+      en: ["Oasis of Hope", "Your space for mental health, motivation, and awareness"],
+      zh: ["希望绿洲", "关于心理健康、激励与自我成长的空间"]
+    };
+    document.getElementById("site-title").innerText = titles[lang][0];
+    document.getElementById("site-tagline").innerText = titles[lang][1];
+
+    // تغيير اتجاه الصفحة حسب اللغة
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+  }
+</script>
+
 </body>
 </html>
